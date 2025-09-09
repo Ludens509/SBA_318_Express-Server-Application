@@ -2,12 +2,14 @@ import express from "express";
 // import baseRoutes from './routes/baseRoutes.mjs';
 import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 import globalErrmdware from "./middleware/globalErrHandler.mjs";
+import{users,posts,comments} from './utilities/database.mjs'
 
 const app = express();
 const port = 3000;
 
 // serve static files from the styles directory
 app.use(express.static("./styles"));
+app.use(express.static("./script"));
 
 
 // define the template engine
@@ -31,24 +33,42 @@ templateEngineHandler(app);
 //app.set("views", "./views"); // specify the views directory
 //app.set("view engine", "test"); // register the template engine
 
-app.get("/", (req, res) => {
-  const options = {
-    title: "Rendering Views with Express",
-    content:
-      "Here, we've created a basic template engine using <code>app.engine()</code> \
-      and the <code>fs</code> module, then used <code>res.render</code> to \
-      render this page using custom content within the template.<br><br> \
-      Generally, you won't want to create your own view engines, \
-      but it important to understand how they work behind the scenes. \
-      For a look at some popular view engines, check out the documentation for \
-      <a href='https://pugjs.org/api/getting-started.html'>Pug</a>, \
-      <a href='https://www.npmjs.com/package/mustache'>Mustache</a>, or \
-      <a href='https://www.npmjs.com/package/ejs'>EJS</a>. \
-      More complete front-end libraries like React, Angular, and Vue \
-      also have Express integrations.",
+app.get("/posts", (req, res) => {
+  // Generate HTML for all posts
+  let postsHtml = '';
+  
+  posts.forEach((post, index) => {
+    postsHtml += `
+      <article class="post">
+        <header class="post-header">
+          <h3 class="post-title">
+            <a href="/posts/${post.id || index + 1}">${post.title}</a>
+          </h3>
+          <div class="post-meta">
+            <span class="author">By <a href="/users/${post.author || 'anonymous'}">${post.author || 'Anonymous'}</a></span>
+            <span class="date">${post.date || new Date().toLocaleDateString()}</span>
+            <span class="comments-count">${post.comments || 0} comments</span>
+          </div>
+        </header>
+        <div class="post-excerpt">
+          <p>${post.content}</p>
+        </div>
+        <footer class="post-footer">
+          <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
+          <button  type="button" class="post-tags">
+            Delete
+          </button>
+        </footer>
+      </article>
+    `;
+  });
+
+   const options = {
+    title: "MiniBlog - Latest Posts",
+    content: "Welcome to our minimalist blog",
+    postsHtml: postsHtml
   };
 
-//   res.render("home", options);
   res.render("index", options);
 });
 

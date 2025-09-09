@@ -1,26 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" >
-</head>
-<body>
-     <header class="header">
-        <div class="container">
-            <h1 class="logo"><a href="/">MiniBlog</a></h1>
-            <nav class="nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/posts" class="nav-link">Posts</a>
-                
-            </nav>
-        </div>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="/">MiniBlog</a></h1>
+        <nav class="nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/posts" class="nav-link">Posts</a>
+        </nav>
+      </div>
     </header>
 
-    <div id="app">
-      <h1>#title#</h1>
-      <div>#content#</div>
-    </div>
-</body>
+    <main class="container" id="app">
+       <!-- Page Header -->
+      <div class="page-header">
+        <h1>#title#</h1>
+        <div class="page-description">#content#</div>
+      </div>
+
+      <!--  -->
+
+      <!-- Individual Post -->
+      <section class="posts-section">
+        <div class="section-header">
+          <h2>Latest Posts</h2>
+          <a href="/posts/new" class="btn btn-primary" id="postBtn">New Post</a>
+        </div>
+        <!-- Comment Form -->
+        <form class="comment-form active form-create-post">
+          <textarea id="textarea" placeholder="Write a comment..." rows="3"></textarea>
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+
+
+            #postsHtml#
+        <!-- <article class="post">
+          <header class="post-header">
+            <h3 class="post-title">
+              <a href="/posts/1">#title#</a>
+            </h3>
+            <div class="post-meta">
+              <span class="author">By <a href="/users/john">John Doe</a></span>
+              <span class="date">March 15, 2024</span>
+              <span class="comments-count">5 comments</span>
+            </div>
+          </header>
+          <div class="post-excerpt">
+            <p>
+             #content#
+            </p>
+          </div>
+          <footer class="post-footer">
+            <a href="/posts/1" class="read-more">Read More</a>
+            <div class="post-tags">
+              <span class="tag">Design</span>
+              <span class="tag">Minimalism</span>
+            </div>
+          </footer>
+        </article> -->
+      </section>
+
+      <!-- Single Post View (Hidden by default, show when viewing individual post) -->
+      <section class="single-post" style="display: none;">
+        
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+          <h3>Comments (5)</h3>
+
+          <!-- Comments List -->
+          <div class="comments">
+            <!-- Individual Comment -->
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-meta">
+                  <span class="comment-author">Alice Johnson</span>
+                  <span class="comment-date">2 hours ago</span>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Great article! I've been trying to apply these principles to
+                  my own designs. The section about white space was particularly
+                  helpful.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="comments">
+            <!-- Individual Comment -->
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-meta">
+                  <span class="comment-author">Alice Johnson</span>
+                  <span class="comment-date">2 hours ago</span>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Great article! I've been trying to apply these principles to
+                  my own designs. The section about white space was particularly
+                  helpful.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
 </html>

@@ -2,8 +2,8 @@
 
 const createBtn = document.getElementById("postBtn");
 const form = document.querySelector(".form-create-post");
-const textArea = document.getElementById('textarea');
-console.log(createBtn);
+const inputPost = document.querySelector('.input-field');
+// console.log(createBtn);
 createBtn.addEventListener('click',(e)=>{
     e.preventDefault();
     
@@ -14,5 +14,5 @@ createBtn.addEventListener('click',(e)=>{
     }else{
         form.classList.add('active');
     }
-    textArea.focus();
+    inputPost.focus();
 });

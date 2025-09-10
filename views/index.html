@@ -19,7 +19,7 @@
     </header>
 
     <main class="container" id="app">
-       <!-- Page Header -->
+      <!-- Page Header -->
       <div class="page-header">
         <h1>#title#</h1>
         <div class="page-description">#content#</div>
@@ -35,12 +35,29 @@
         </div>
         <!-- Comment Form -->
         <form class="comment-form active form-create-post">
-          <textarea id="textarea" placeholder="Write a comment..." rows="3"></textarea>
-          <button type="submit" class="btn btn-primary">Post Comment</button>
+          <div>
+            <label for="title">Title</label>
+            <input
+            class="input-field"
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Post Title"
+            />
+          </div>
+
+          <div>
+            <label for="textarea">content</label>
+            <textarea
+              id="textarea"
+              placeholder="Write something..."
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">submit Post</button>
         </form>
 
-
-            #postsHtml#
+        #postsHtml#
         <!-- <article class="post">
           <header class="post-header">
             <h3 class="post-title">
@@ -68,9 +85,7 @@
       </section>
 
       <!-- Single Post View (Hidden by default, show when viewing individual post) -->
-      <section class="single-post" style="display: none;">
-        
-
+      <section class="single-post" style="display: none">
         <!-- Comments Section -->
         <section class="comments-section">
           <h3>Comments (5)</h3>

@@ -1,5 +1,5 @@
 import express from "express";
-// import baseRoutes from './routes/baseRoutes.mjs';
+import postRoutes from './routes/postRoutes.mjs';
 import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 import globalErrmdware from "./middleware/globalErrHandler.mjs";
 import{users,posts,comments} from './utilities/database.mjs'
@@ -33,46 +33,9 @@ templateEngineHandler(app);
 //app.set("views", "./views"); // specify the views directory
 //app.set("view engine", "test"); // register the template engine
 
-app.get("/posts", (req, res) => {
-  // Generate HTML for all posts
-  let postsHtml = '';
-  
-  posts.forEach((post, index) => {
-    postsHtml += `
-      <article class="post">
-        <header class="post-header">
-          <h3 class="post-title">
-            <a href="/posts/${post.id || index + 1}">${post.title}</a>
-          </h3>
-          <div class="post-meta">
-            <span class="author">By <a href="/users/${post.author || 'anonymous'}">${post.author || 'Anonymous'}</a></span>
-            <span class="date">${post.date || new Date().toLocaleDateString()}</span>
-            <span class="comments-count">${post.comments || 0} comments</span>
-          </div>
-        </header>
-        <div class="post-excerpt">
-          <p>${post.content}</p>
-        </div>
-        <footer class="post-footer">
-          <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
-          <button  type="button" class="post-tags">
-            Delete
-          </button>
-        </footer>
-      </article>
-    `;
-  });
 
-   const options = {
-    title: "MiniBlog - Latest Posts",
-    content: "Welcome to our minimalist blog",
-    postsHtml: postsHtml
-  };
 
-  res.render("index", options);
-});
-
-// app.use('/',baseRoutes);
+app.use("/",postRoutes);
 
 //global error handler
 app.use(globalErrmdware);

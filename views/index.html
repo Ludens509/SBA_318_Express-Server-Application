@@ -34,7 +34,18 @@
           <a href="/posts/new" class="btn btn-primary" id="postBtn">New Post</a>
         </div>
         <!-- Comment Form -->
-        <form class="comment-form active form-create-post">
+        <form method="POST" action="/posts" class="comment-form active form-create-post">
+          <div>
+            <label for="author">author</label>
+            <input
+            class="input-field"
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author Name"
+            />
+          </div>
+
           <div>
             <label for="title">Title</label>
             <input

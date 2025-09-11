@@ -2,10 +2,14 @@ import express from "express";
 import postRoutes from './routes/postRoutes.mjs';
 import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 import globalErrmdware from "./middleware/globalErrHandler.mjs";
-import{users,posts,comments} from './utilities/database.mjs'
+import { users, posts, comments } from './utilities/database.mjs'
 
 const app = express();
 const port = 3000;
+
+//Middleware
+// app.use(express.json);
+app.use(express.urlencoded({ extended: true }));
 
 // serve static files from the styles directory
 app.use(express.static("./styles"));
@@ -35,7 +39,7 @@ templateEngineHandler(app);
 
 
 
-app.use("/",postRoutes);
+app.use("/", postRoutes);
 
 //global error handler
 app.use(globalErrmdware);

@@ -40,13 +40,6 @@ router
     `;
     })
 
-    //post an item Route
-    //@route POST /posts
-    //@desc Make a posts
-    //@access Public
-
-    
-
 
     /*---------------------------------*/
     const options = {
@@ -57,27 +50,76 @@ router
 
     res.render("index", options);
   })
+
+  //post an item Route
+  //@route POST /posts
+  //@desc Make a posts
+  //@access Public
+
+
   .post((req, res) => {
-      const { username, title, content } = req.body;
-      if (username && title && content) {
-        // if (users.find((user) => user.name == name)) {
+    const { username, title, content } = req.body;
 
-        // }
-        if (posts.find((post) => post.title == title)) {
-          res.json({ msg: `🩻 Error - Post title already exist` });
-          return;
-        }
+    if (username && title && content) {
+      // if (users.find((user) => user.name == name)) {
 
-        const post = {
-          id: posts[posts.length - 1].id + 1,
-          username: username,
-          title: title,
-          content: content
-        }
-        posts.push(post);
-        res.json(post);
-      } else return res.status(400).json({ msg: ' Please include a title and a content' });
-    });
+      // }
+      if (posts.find((post) => post.title == title)) {
+        res.json({ msg: `🩻 Error - Post title already exist` });
+        return;
+      }
+
+      const post = {
+        id: posts[posts.length - 1].id + 1,
+        username: username,
+        title: title,
+        content: content
+      }
+      posts.unshift(post);
+
+
+      let postsHtml = '';
+      posts.forEach((post, index) => {
+        postsHtml += `
+      <article class="post">
+        <header class="post-header">
+          <h3 class="post-title">
+            <a href="/posts/${post.id || index + 1}">${post.title}</a>
+          </h3>
+          <div class="post-meta">
+            <span class="author">By <a href="/users/${post.username || 'anonymous'}">${post.username || 'Anonymous'}</a></span>
+            <span class="date">${post.date || new Date().toLocaleDateString()}</span>
+            <span class="comments-count">${post.comments || 0} comments</span>
+          </div>
+        </header>
+        <div class="post-excerpt">
+          <p>${post.content}</p>
+        </div>
+        <footer class="post-footer">
+          <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
+          <button  type="button" class="post-tags">
+            Delete
+          </button>
+        </footer>
+      </article>
+    `;
+      })
+
+      const options = {
+        title: "MiniBlog - Latest Posts",
+        content: "Welcome to our minimalist blog",
+        postsHtml: postsHtml
+      };
+
+      res.render("index", options);
+      // res.json(post);
+    } else {
+      return res.status(400).json({
+        msg: 'Please include username, title and content',
+        received: { username, title, content }
+      });
+    }
+  });
 
 
 
@@ -96,7 +138,50 @@ router
       }
     });
     if (post) {
-      res.json(post);
+      // res.json(post);
+      posts.push(post);
     } else next();
   })
+
+
+// /---------------------------------
+
+function posthtml(data) {
+  let postsHtml = '';
+  data.forEach((post, index) => {
+    postsHtml += `
+      <article class="post">
+        <header class="post-header">
+          <h3 class="post-title">
+            <a href="/posts/${post.id || index + 1}">${post.title}</a>
+          </h3>
+          <div class="post-meta">
+            <span class="author">By <a href="/users/${post.username || 'anonymous'}">${post.username || 'Anonymous'}</a></span>
+            <span class="date">${post.date || new Date().toLocaleDateString()}</span>
+            <span class="comments-count">${post.comments || 0} comments</span>
+          </div>
+        </header>
+        <div class="post-excerpt">
+          <p>${post.content}</p>
+        </div>
+        <footer class="post-footer">
+          <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
+          <button  type="button" class="post-tags">
+            Delete
+          </button>
+        </footer>
+      </article>
+    `;
+  })
+
+
+  const options = {
+    title: "MiniBlog - Latest Posts",
+    content: "Welcome to our minimalist blog",
+    postsHtml: postsHtml
+  };
+
+  res.render("index", options);
+
+}
 export default router;

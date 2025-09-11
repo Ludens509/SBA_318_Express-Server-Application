@@ -127,41 +127,41 @@ export const posts = [
     content:
       "odit magnam ut saepe sed non qui\ntempora atque nihil\naccusamus illum doloribus illo dolor\neligendi repudiandae odit magni similique sed cum maiores",
   },
-  {
-    id: 5,
-    username: "joe",
-    title: "a quo magni similique perferendis",
-    content:
-      "alias dolor cumque\nimpedit blanditiis non eveniet odio maxime\nblanditiis amet eius quis tempora quia autem rem\na provident perspiciatis quia",
-  },
-  {
-    id: 6,
-    username: "joe",
-    title: "ullam ut quidem id aut vel consequuntur",
-    content:
-      "debitis eius sed quibusdam non quis consectetur vitae\nimpedit ut qui consequatur sed aut in\nquidem sit nostrum et maiores adipisci atque\nquaerat voluptatem adipisci repudiandae",
-  },
-  {
-    id: 7,
-    username: "joe",
-    title: "doloremque illum aliquid sunt",
-    content:
-      "deserunt eos nobis asperiores et hic\nest debitis repellat molestiae optio\nnihil ratione ut eos beatae quibusdam distinctio maiores\nearum voluptates et aut adipisci ea maiores voluptas maxime",
-  },
-  {
-    id: 8,
-    username:"joe",
-    title: "qui explicabo molestiae dolorem",
-    content:
-      "rerum ut et numquam laborum odit est sit\nid qui sint in\nquasi tenetur tempore aperiam et quaerat qui in\nrerum officiis sequi cumque quod",
-  },
-  {
-    id: 9,
-    username: "joe",
-    title: "magnam ut rerum iure",
-    content:
-      "ea velit perferendis earum ut voluptatem voluptate itaque iusto\ntotam pariatur in\nnemo voluptatem voluptatem autem magni tempora minima in\nest distinctio qui assumenda accusamus dignissimos officia nesciunt nobis",
-  },
+  // {
+  //   id: 5,
+  //   username: "joe",
+  //   title: "a quo magni similique perferendis",
+  //   content:
+  //     "alias dolor cumque\nimpedit blanditiis non eveniet odio maxime\nblanditiis amet eius quis tempora quia autem rem\na provident perspiciatis quia",
+  // },
+  // {
+  //   id: 6,
+  //   username: "joe",
+  //   title: "ullam ut quidem id aut vel consequuntur",
+  //   content:
+  //     "debitis eius sed quibusdam non quis consectetur vitae\nimpedit ut qui consequatur sed aut in\nquidem sit nostrum et maiores adipisci atque\nquaerat voluptatem adipisci repudiandae",
+  // },
+  // {
+  //   id: 7,
+  //   username: "joe",
+  //   title: "doloremque illum aliquid sunt",
+  //   content:
+  //     "deserunt eos nobis asperiores et hic\nest debitis repellat molestiae optio\nnihil ratione ut eos beatae quibusdam distinctio maiores\nearum voluptates et aut adipisci ea maiores voluptas maxime",
+  // },
+  // {
+  //   id: 8,
+  //   username:"joe",
+  //   title: "qui explicabo molestiae dolorem",
+  //   content:
+  //     "rerum ut et numquam laborum odit est sit\nid qui sint in\nquasi tenetur tempore aperiam et quaerat qui in\nrerum officiis sequi cumque quod",
+  // },
+  // {
+  //   id: 9,
+  //   username: "joe",
+  //   title: "magnam ut rerum iure",
+  //   content:
+  //     "ea velit perferendis earum ut voluptatem voluptate itaque iusto\ntotam pariatur in\nnemo voluptatem voluptatem autem magni tempora minima in\nest distinctio qui assumenda accusamus dignissimos officia nesciunt nobis",
+  // },
 ];
 
 export const comments = [{

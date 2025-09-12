@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <style>
+      .edit-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .edit-form {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .input-field,
+      #content {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .input-field:focus,
+      #content:focus {
+        outline: none;
+        border-color: #007acc;
+        box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+      }
+
+      #content {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: #007acc;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #0056b3;
+      }
+
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #545b62;
+      }
+
+      .posts-display {
+        margin-top: 2rem;
+      }
+
+      .post.updated {
+        border-left: 4px solid #28a745;
+        background-color: #f8fff9;
+      }
+
+      /* Hide posts display initially, show after update */
+      .posts-display:empty {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="/">MiniBlog</a></h1>
+        <nav class="nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/posts" class="nav-link">Posts</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="app">
+      <div class="edit-container">
+        <h1>#title#</h1>
+        
+        <!-- Edit Form -->
+        <form method="PUT" action="/posts/#postId#/edit" id="editForm" class="comment-form edit-form">
+          <input type="hidden" id="postId" value="#postId#">
+          
+          <div class="form-group">
+            <label for="username">Author</label>
+            <input
+              class="input-field"
+              type="text"
+              name="username"
+              id="username"
+              value="#username#"
+              placeholder="Author Name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              class="input-field"
+              type="text"
+              name="title"
+              id="title"
+              value="#postTitle#"
+              placeholder="Post Title"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              placeholder="Write something..."
+              rows="8"
+              required
+            >#postContent#</textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Post</button>
+            <a href="/posts" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success/Updated Posts Display (shows after update) -->
+      <!-- <div class="posts-display">
+        #postsHtml#
+      </div> -->
+    </main>
+
+   
+  </body>
+
+</html>

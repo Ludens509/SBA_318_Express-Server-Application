@@ -31,10 +31,10 @@ router
           <p>${post.content}</p>
         </div>
         <footer class="post-footer">
-          <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
-          <button  type="button" class="post-tags">
+          <a href="/posts/${post.id || index + 1}/edit" class="read-more">edit</a>
+          <a  href="/posts" class="post-tags">
             Delete
-          </button>
+          <a>
         </footer>
       </article>
     `;
@@ -97,9 +97,9 @@ router
         </div>
         <footer class="post-footer">
           <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
-          <button  type="button" class="post-tags">
+          <a href="/posts"  type="button" class="post-tags">
             Delete
-          </button>
+          </a>
         </footer>
       </article>
     `;
@@ -123,32 +123,36 @@ router
 
 
 
-router
-  .route("/posts/:id")
-  .patch((req, res, next) => {
-    const updateData = req.body;
-    const post = posts.find((post, i) => {
-      if (post.id == req.params.id) {
-        for (const key in updateData) {
-          if (updateData[key] !== undefined) {
-            posts[i][key] = updateData[key];
-          }
-        }
-        return true;
-      }
-    });
-    if (post) {
-      // res.json(post);
-      posts.push(post);
-    } else next();
-  })
+
 
 
 // /---------------------------------
 
-function posthtml(data) {
+router.delete("/posts/:id/delete", (req, res) => {
+  console.log("=== GET EDIT FORM ===");
+  console.log("Post ID from params:", req.params.id);
+  console.log("Current posts array:", posts);
+
+  const postId = parseInt(req.params.id);
+  const postIndex = posts.find(p => p.id === postId);
+
+  console.log("Looking for post with ID:", postId);
+  console.log("Found post:", postIndex);
+
+  if (!postIndex) {
+    console.log("Post not found, sending 404");
+    return res.status(404).send(`
+            <h1>Error 404</h1>
+            <p>Post not found</p>
+            <a href="/posts">Back to Posts</a>
+        `);
+  }
+
+  // Remove the post from the array
+  posts.splice(postIndex, 1);
+
   let postsHtml = '';
-  data.forEach((post, index) => {
+  posts.forEach((post, index) => {
     postsHtml += `
       <article class="post">
         <header class="post-header">
@@ -166,14 +170,13 @@ function posthtml(data) {
         </div>
         <footer class="post-footer">
           <a href="/posts/${post.id || index + 1}" class="read-more">edit</a>
-          <button  type="button" class="post-tags">
+          <a href="/posts"  type="button" class="post-tags">
             Delete
-          </button>
+          </a>
         </footer>
       </article>
     `;
   })
-
 
   const options = {
     title: "MiniBlog - Latest Posts",
@@ -183,5 +186,6 @@ function posthtml(data) {
 
   res.render("index", options);
 
-}
+
+});
 export default router;

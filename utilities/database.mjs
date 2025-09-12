@@ -165,15 +165,21 @@ export const posts = [
 ];
 
 export const comments = [{
-    id: 1,
-    userId: 2,
-    postId: 4,
-    body: "odit magnam ut saepe sed non qui\ntempora atqui"
+  id: 1,
+  userId: 1,
+  postId: 4,
+  body: "odit magnam ut saepe sed non qui\ntempora atqui"
 }, {
-    id: 2,
-    userId: 2,
-    postId: 4,
-    body: "odit magnam ut saepe sed non qui\ntempora atqui"
+  id: 2,
+  userId: 2,
+  postId: 2,
+  body: "odit magnam ut saepe sed non qui\ntempora atqui"
+}
+  , {
+  id: 3,
+  userId: 2,
+  postId: 1,
+  body: "odit magnam ut saepe sed non qui\ntempora atqui"
 },];
 
 export const users = [

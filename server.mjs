@@ -1,10 +1,10 @@
 import express from "express";
-import postRoutes from './routes/postRoutes.mjs';
-import userRoutes from './routes/userRoutes.mjs'
 import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
-import editPostRoutes from "./routes/editPostRoutes.mjs"
 import globalErrmdware from "./middleware/globalErrHandler.mjs";
-import { users, posts, comments } from './utilities/database.mjs'
+import editPostRoutes from "./routes/editPostRoutes.mjs";
+import postRoutes from './routes/postRoutes.mjs';
+import userRoutes from './routes/userRoutes.mjs';
+import commentsRoutes from './routes/commentRoute.mjs'
 
 const app = express();
 const port = 3000;
@@ -24,6 +24,7 @@ templateEngineHandler(app);
 
 app.use("/", postRoutes);
 app.use("/users", userRoutes);
+app.use("/comments", commentsRoutes);
 app.use("/",editPostRoutes)
 
 //global error handler

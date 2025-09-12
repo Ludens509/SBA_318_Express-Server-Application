@@ -12,9 +12,9 @@
       <div class="container">
         <h1 class="logo"><a href="/">MiniBlog</a></h1>
         <nav class="nav">
-          <a href="./users" class="nav-link">users</a>
-          <a href="./posts" class="nav-link">Posts</a>
-          <a href="./comments" class="nav-link">comments</a>
+          <a href="/users" class="nav-link">users</a>
+          <a href="/posts" class="nav-link">Posts</a>
+          <a href="/comments" class="nav-link">comments</a>
         </nav>
       </div>
     </header>
@@ -23,7 +23,7 @@
       <!-- Page Header -->
       <div class="page-header" style="margin-bottom: 2rem; text-align:center;"  >
         <h1>#title#</h1>
-        <div class="page-description">#content#</div>
+        <!-- <div class="page-description">#content#</div> -->
       </div>
 
       <!--  -->
@@ -70,7 +70,6 @@
           <button type="submit" class="btn btn-primary">submit Post</button>
         </form>
 
-        #postsHtml#
        
       </section>
 
@@ -78,45 +77,14 @@
       <section class="single-post" style="display: none">
         <!-- Comments Section -->
         <section class="comments-section">
-          <h3>Comments (5)</h3>
+          <h3>#content#</h3>
 
           <!-- Comments List -->
           <div class="comments">
             <!-- Individual Comment -->
-            <div class="comment">
-              <div class="comment-header">
-                <div class="comment-meta">
-                  <span class="comment-author">Alice Johnson</span>
-                  <span class="comment-date">2 hours ago</span>
-                </div>
-              </div>
-              <div class="comment-content">
-                <p>
-                  Great article! I've been trying to apply these principles to
-                  my own designs. The section about white space was particularly
-                  helpful.
-                </p>
-              </div>
-            </div>
+           #commentsHtml#
           </div>
-          <div class="comments">
-            <!-- Individual Comment -->
-            <div class="comment">
-              <div class="comment-header">
-                <div class="comment-meta">
-                  <span class="comment-author">Alice Johnson</span>
-                  <span class="comment-date">2 hours ago</span>
-                </div>
-              </div>
-              <div class="comment-content">
-                <p>
-                  Great article! I've been trying to apply these principles to
-                  my own designs. The section about white space was particularly
-                  helpful.
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </section>
       </section>
     </main>

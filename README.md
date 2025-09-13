@@ -6,11 +6,8 @@ Express Server Application</h1>
 
 <div align="center">
   <h3>
-    <a href="https://sba-308-a-java-script-web-applicati.vercel.app/">
-      Demo
-    </a>
     <span> | </span>
-    <a href="https://www.canva.com/design/DAFtDB2xfOk/xEpMguB7x3VPSkrx3KaJgw/edit">
+    <a href="">
       Challenge
     </a>
   </h3>

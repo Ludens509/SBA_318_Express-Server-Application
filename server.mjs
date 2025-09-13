@@ -27,6 +27,56 @@ app.use("/users", userRoutes);
 app.use("/comments", commentsRoutes);
 app.use("/",editPostRoutes)
 
+
+// / Adding some HATEOAS links.
+app.get("/", (req, res) => {
+  res.json({
+    links: [
+      {
+        href: "/api/comments",
+        rel: "comments",
+        type: "GET",
+      },
+      {
+        href: "/api/comments",
+        rel: "comments",
+        type: "POST",
+      },
+      {
+        href: "/posts",
+        rel: "posts",
+        type: "POST",
+      },
+      {
+        href: "/posts",
+        rel: "posts",
+        type: "GET",
+      },
+      {
+        href: "/posts",
+        rel: "users",
+        type: "GET",
+      },
+      {
+        href: "//posts/:id/edit",
+        rel: "api",
+        type: "GET",
+      },
+    
+      {
+        href: "//posts/:id/edit",
+        rel: "api",
+        type: "PUT",
+      },
+      {
+        href: "//posts/:id/delete",
+        rel: "api",
+        type: "DELETE",
+      },
+    ],
+  });
+});
+
 //global error handler
 app.use(globalErrmdware);
 

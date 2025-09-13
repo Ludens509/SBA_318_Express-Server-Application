@@ -21,7 +21,7 @@
 
     <main class="container" id="app">
       <!-- Page Header -->
-      <div class="page-header" style="margin-bottom: 2rem; text-align:center;"  >
+      <div class="page-header" style="margin-bottom: 2rem; text-align: center">
         <h1>#title#</h1>
         <!-- <div class="page-description">#content#</div> -->
       </div>
@@ -35,11 +35,15 @@
           <a href="/posts/new" class="btn btn-primary" id="postBtn">New Post</a>
         </div>
         <!-- Comment Form -->
-        <form method="POST" action="/posts" class="comment-form active form-create-post">
+        <form
+          method="POST"
+          action="/posts"
+          class="comment-form active form-create-post"
+        >
           <div>
             <label for="author">author</label>
             <input
-            class="input-field"
+              class="input-field"
               type="text"
               name="username"
               id="username"
@@ -50,7 +54,7 @@
           <div>
             <label for="title">Title</label>
             <input
-            class="input-field"
+              class="input-field"
               type="text"
               name="title"
               id="title"
@@ -69,22 +73,22 @@
           </div>
           <button type="submit" class="btn btn-primary">submit Post</button>
         </form>
-
-       
       </section>
 
       <!-- Single Post View (Hidden by default, show when viewing individual post) -->
-      <section class="single-post" style="display: none">
+      <section class="single-post">
         <!-- Comments Section -->
         <section class="comments-section">
-          <h3>#content#</h3>
+          <div style=" display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 1rem;  ">
+            <h2>Total number of comments</h2>
+            <span>(#content#)</span>
+          </div>
 
           <!-- Comments List -->
           <div class="comments">
             <!-- Individual Comment -->
-           #commentsHtml#
+            #commentsHtml#
           </div>
-          
         </section>
       </section>
     </main>

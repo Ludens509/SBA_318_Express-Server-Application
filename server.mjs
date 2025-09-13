@@ -33,12 +33,12 @@ app.get("/", (req, res) => {
   res.json({
     links: [
       {
-        href: "/api/comments",
+        href: "/comments",
         rel: "comments",
         type: "GET",
       },
       {
-        href: "/api/comments",
+        href: "/comments",
         rel: "comments",
         type: "POST",
       },
@@ -58,18 +58,18 @@ app.get("/", (req, res) => {
         type: "GET",
       },
       {
-        href: "//posts/:id/edit",
+        href: "/posts/:id/edit",
         rel: "api",
         type: "GET",
       },
     
       {
-        href: "//posts/:id/edit",
+        href: "/posts/:id/edit",
         rel: "api",
         type: "PUT",
       },
       {
-        href: "//posts/:id/delete",
+        href: "/posts/:id/delete",
         rel: "api",
         type: "DELETE",
       },
